@@ -1,6 +1,8 @@
 package main
 
 import (
+    "fmt"
+    "os"
     "log"
     "github.com/labstack/echo/v4"
     _ "github.com/lib/pq"
@@ -35,5 +37,5 @@ func main() {
     // Rute untuk mendapatkan detail toko berdasarkan ID
     e.GET("/stores/:id", handler.GetStoreDetail)
 
-    e.Start(":8080")
+    e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", os.Getenv("PORT"))))
 }
